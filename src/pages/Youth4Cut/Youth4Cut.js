@@ -1,8 +1,11 @@
 import React from 'react'
 import * as B from './Youth4Cut.style'
 import Frame from '../../assets/frame.png'
+import { useNavigate } from 'react-router-dom'
 
 function Youth4Cut() {
+  const navigate = useNavigate()
+
   const handleImageDownload = () => {
     const url = Frame
 
@@ -13,6 +16,10 @@ function Youth4Cut() {
     a.click()
 
     document.body.removeChild(a)
+  }
+
+  const handleMoveHome = () => {
+    navigate('/')
   }
 
   return (
@@ -39,7 +46,7 @@ function Youth4Cut() {
           <br />
           함께 써내려가주세요
         </B.TextStyleBold>
-        <B.BackgroundContainer>
+        <B.BackgroundContainer onClick={handleMoveHome}>
           <B.ParticipationText>
             한 페이지가 될 수 있게 캠페인 참여하기
           </B.ParticipationText>
