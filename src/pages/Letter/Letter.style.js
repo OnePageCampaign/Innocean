@@ -72,8 +72,8 @@ export const BelowIcon = styled(RestartSVG)`
 `;
 
 export const BackgroundContainer = styled.div`
-  width: 67%;
-  height: 52%;
+  width: 226px;
+  height: 75px;
   background: #1c1c1c;
   border-radius: 0.2rem;
   display: flex;
