@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { ReactComponent as ArrowIconSVG } from "../../assets/material-symbols_arrow-back-ios-new-rounded.svg";
-import { ReactComponent as GroupSVG } from "../../assets/Group.svg";
+import { ReactComponent as RestartSVG } from "../../assets/solar_restart-bold.svg";
+import { ReactComponent as ArrowIconSVG } from "../../assets/white_material-symbols_arrow-back-ios-new-rounded.svg";
 
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
+  background: linear-gradient(180deg, #f8f8f8 0%, #fdffa1 100%);
 `;
 
 export const ImageContainer = styled.img`
@@ -27,7 +28,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  color: white;
+  color: #4a4141;
   font-size: 3rem;
   font-family: UhBeemysen;
   font-weight: bold;
@@ -39,22 +40,41 @@ export const CenteredContainer = styled.div`
 `;
 
 export const TextStyleNormal = styled.span`
-  color: white;
   font-size: 1.17rem;
   font-weight: 400;
-  line-height: 1.5rem;
-  word-wrap: break-word;
-  display: block;
 `;
 
 export const TextStyleBold = styled.span`
+  font-size: 1.17rem;
   font-weight: 700;
+  color: #333333;
+  white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+  line-height: 1.5rem;
+  word-wrap: break-word;
+  display: inline; /* 인라인 요소로 설정하여 한 줄에 나란히 배치 */
+  color: #333333;
+`;
+
+export const LearnMoreText = styled.div`
+  text-align: center;
+  color: #454545;
+  font-size: 1rem;
+  font-family: "Pretendard Variable", sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+
+  display: inline; /* 인라인 요소로 설정하여 한 줄에 나란히 배치 */
+`;
+
+export const BelowIcon = styled(RestartSVG)`
+  width: 1rem;
+  height: 1rem;
 `;
 
 export const BackgroundContainer = styled.div`
-  width: 77%;
-  height: 7%;
-  background: #e5eff2;
+  width: 67%;
+  height: 52%;
+  background: #1c1c1c;
   border-radius: 0.2rem;
   display: flex;
   justify-content: center;
@@ -64,8 +84,8 @@ export const BackgroundContainer = styled.div`
 export const ParticipationText = styled.div`
   width: 100%;
   height: 100%;
-  color: #454545;
-  font-size: 1rem;
+  color: white;
+  font-size: 0.9rem;
   font-weight: 700;
   word-wrap: break-word;
   display: flex;
@@ -78,24 +98,3 @@ export const ArrowIcon = styled(ArrowIconSVG)`
   height: 1rem;
   /* 필요에 따라 사이즈를 조절하세요 */
 `;
-
-export const LearnMoreText = styled.div`
-  text-align: center;
-  color: white;
-  font-size: 1rem;
-  font-family: "Pretendard Variable", sans-serif;
-  font-weight: 500;
-  word-wrap: break-word;
-  position: absolute;
-  bottom: 4rem;
-`;
-
-export const BelowIcon = styled(GroupSVG)`
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  bottom: 1rem;
-`;
-
-
-
