@@ -90,10 +90,10 @@ export const WhiteBackgroundContainerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 85%;
   background: #f39db6
   height: auto; /* 높이 자동 설정 */
-  gap: 1rem;
+  gap: 0.5rem;
 `
 
 export const WhiteBackgroundContainer = styled.div`
@@ -112,7 +112,7 @@ export const WhiteParticipationText = styled.div`
   width: 100%;
   height: 100%;
   color: #454545;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 700;
   word-wrap: break-word;
   display: flex;
