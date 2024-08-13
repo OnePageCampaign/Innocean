@@ -3,10 +3,6 @@ import { ReactComponent as RestartSVG } from '../../assets/solar_restart-bold.sv
 import { ReactComponent as CameraIconSVG } from '../../assets/ph_camera-fill.svg'
 import { ReactComponent as ShareIconSVG } from '../../assets/ic_baseline-share.svg'
 
-export const TotalWrapper = styled.div`
-  background: linear-gradient(180deg, #f8f8f8 0%, #f39db6 100%);
-`
-
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -15,8 +11,8 @@ export const Wrapper = styled.div`
 `
 
 export const ImageContainer = styled.img`
-  width: 100%;
-  height: 100vh;
+  width: 17rem;
+  height: 24rem;
   max-width: 400px;
   box-sizing: border-box;
 `
@@ -75,14 +71,12 @@ export const BackgroundContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
   max-width: 19rem;
   padding: 1rem;
 `
 
 export const ParticipationText = styled.div`
   width: 19rem;
-  height: 200%;
   color: white;
   font-size: 0.9rem;
   font-weight: 700;
