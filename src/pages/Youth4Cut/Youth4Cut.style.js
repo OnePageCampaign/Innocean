@@ -6,7 +6,7 @@ import { ReactComponent as ShareIconSVG } from '../../assets/ic_baseline-share.s
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(180deg, #f8f8f8 0%, #f39db6 100%);
 `
 
