@@ -18,11 +18,9 @@ export const ImageContainer = styled.img`
 `
 
 export const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -34,6 +32,7 @@ export const Container = styled.div`
   font-family: UhBeemysen;
   font-weight: bold;
   text-align: center;
+  overflow: hidden;
 `
 
 export const CenteredContainer = styled.div`
@@ -71,12 +70,10 @@ export const BackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 100%; /* Wrapper 너비에 맞추기 */
-  height: auto; /* 높이 자동 설정 */
-  max-width: 19rem; /* 적절한 너비로 제한 */
-  padding: 1rem; /* 내외부 여백 추가 */
-  margin-top: 1rem; /* 상단에 약간의 여백 추가 */
+  width: 100%;
+  height: auto;
+  max-width: 19rem;
+  padding: 1rem;
 `
 
 export const ParticipationText = styled.div`
@@ -102,7 +99,7 @@ export const WhiteBackgroundContainerBox = styled.div`
 
 export const WhiteBackgroundContainer = styled.div`
   width: 40%;
-  height: 200%;
+  height: 2rem;
   background: #e5eff2;
   border-radius: 0.2rem;
   display: flex;

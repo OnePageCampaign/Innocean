@@ -27,7 +27,7 @@ function Youth4Cut() {
       <B.Container>
         마음을 전해주는 <br />한 페이지를 보내주세요
         <B.TextStyleBold>우리의 청춘을 네 컷에 담았다</B.TextStyleBold>
-        <img src={Frame} style={{ width: '19rem', height: '27rem' }} />
+        <img src={Frame} style={{ width: '18rem', height: '25rem' }} />
         <B.WhiteBackgroundContainerBox>
           <B.WhiteBackgroundContainer>
             <B.WhiteParticipationText onClick={handleImageDownload}>
