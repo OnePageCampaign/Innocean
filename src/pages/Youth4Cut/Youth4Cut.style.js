@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
 `
 
 export const ImageContainer = styled.img`
-  width: 17rem;
-  height: 24rem;
+  width: 15rem;
+  height: 20rem;
   max-width: 400px;
   box-sizing: border-box;
 `
@@ -65,7 +65,7 @@ export const LearnMoreText = styled.div`
 `
 
 export const BackgroundContainer = styled.div`
-  background: #1c1c1c;
+  background-color: #1c1c1c;
   border-radius: 0.4rem;
   display: flex;
   justify-content: center;
@@ -91,6 +91,7 @@ export const WhiteBackgroundContainerBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background: #f39db6
   height: auto; /* 높이 자동 설정 */
   gap: 1rem;
 `

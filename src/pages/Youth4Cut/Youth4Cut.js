@@ -34,7 +34,6 @@ function Youth4Cut() {
               <B.BlackCameraIcon /> 사진 다운로드
             </B.WhiteParticipationText>
           </B.WhiteBackgroundContainer>
-
           <B.WhiteBackgroundContainer>
             <B.WhiteParticipationText>
               <B.ShareIcon /> 캠페인 공유하기
