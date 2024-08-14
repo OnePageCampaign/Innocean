@@ -75,7 +75,7 @@ export const BackgroundContainer = styled.div`
   width: 226px;
   height: 50px;
   background: #1c1c1c;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
