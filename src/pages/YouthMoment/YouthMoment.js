@@ -41,7 +41,7 @@ function YouthSketch() {
         </S.CenteredContainer>
         <img
           src={imageUrl ? imageUrl : MomentImg}
-          style={{ width: "19rem", height: "19rem" }}
+          style={{ width: "19rem", height: "19rem", objectFit: "cover" }}
         ></img>
         <S.BackgroundContainer onClick={handleContainerClick}>
           <S.ParticipationText>
