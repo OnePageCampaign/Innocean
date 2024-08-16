@@ -4,7 +4,8 @@ import App from "./App";
 import Home from "./pages/Home";
 import Letter from "./pages/Letter/Letter";
 import Youth4Cut from "./pages/Youth4Cut/Youth4Cut";
-import YouthSketch from "./pages/YouthMoment/YouthMoment";
+import YouthMoment from "./pages/YouthMoment/YouthMoment";
+import Send from "./pages/Send/Send";
 
 const router = createBrowserRouter([
   {
@@ -20,13 +21,18 @@ const router = createBrowserRouter([
         element: <Letter />,
       },
       {
+        path: "send",
+        element: <Send />,
+      },
+      {
         path: "youth-4cut",
         element: <Youth4Cut />,
       },
       {
         path: "youth-moment",
-        element: <YouthSketch />,
+        element: <YouthMoment />,
       },
+      
     ],
   },
 ]);

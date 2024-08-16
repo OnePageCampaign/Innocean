@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./YouthMoment.style";
 import MomentImg from "../../assets/momentpic.png";
 
-function YouthSketch() {
+function YouthMoment() {
   const navigate = useNavigate(); // useNavigate 훅을 사용합니다.
 
   const [imageUrl, setImageUrl] = useState(null); // 이미지 URL 상태
@@ -62,4 +62,4 @@ function YouthSketch() {
   );
 }
 
-export default YouthSketch;
+export default YouthMoment;
