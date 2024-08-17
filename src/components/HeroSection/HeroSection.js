@@ -29,6 +29,17 @@ function HeroSection() {
         <L.LearnMoreText>더 알아보기</L.LearnMoreText>
         <L.BelowIcon />
       </L.Container>
+
+      <div className="whiteContainer">
+        <div className="centeredText">
+          <span className="textNormal">
+            매년 2천 명이 넘는
+            <br />
+          </span>
+          <span className="textBold">보호대상아동</span>
+          <span className="textNormal">이 발생하고 있습니다</span>
+        </div>
+      </div>
     </L.Wrapper>
   );
 }

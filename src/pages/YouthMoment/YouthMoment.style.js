@@ -113,3 +113,50 @@ export const ArrowIcon = styled(ArrowIconSVG)`
   width: 1rem;
   height: 1rem;
 `;
+
+export const ModalContainer = styled.div`
+  width: 20rem;
+  height: 10rem;
+  border: 1px solid #636363; /* 경계선 스타일 지정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NotificationText = styled.div`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: black;
+  font-size: 0.9rem; /* 폰트 크기 px 단위로 지정 */
+  font-weight: 600; /* 폰트 두께 */
+  word-wrap: break-word;
+`;
+
+export const MessageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  color: black;
+  font-size: 1rem; /* px 단위 추가 */
+  font-weight: 200;
+  word-wrap: break-word;
+`;
+
+export const StyledDiv = styled.div`
+  width: 100%; // 너비를 부모 컨테이너의 100%로 설정
+  height: 1px; // 선의 두께를 1px로 설정
+
+  background: #c0c0c0; // 배경색을 이용하여 선 색상 지정
+`;
+
+export const ConfirmationText = styled.div`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: black;
+  font-size: 0.9rem; /* 폰트 크기 px 단위로 지정 */
+  font-family: "Pretendard Variable", sans-serif; /* 폰트 패밀리 백업 추가 */
+  font-weight: 600;
+  word-wrap: break-word;
+  cursor: pointer;
+`;

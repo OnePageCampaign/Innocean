@@ -97,5 +97,8 @@ export const BelowIcon = styled(GroupSVG)`
   bottom: 1rem;
 `;
 
-
-
+export const WhiteContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background: white;
+`;

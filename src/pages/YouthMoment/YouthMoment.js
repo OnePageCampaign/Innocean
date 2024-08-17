@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./YouthMoment.style";
 import MomentImg from "../../assets/momentpic.png";
+import Modal from "react-modal";
 
 function YouthMoment() {
   const navigate = useNavigate(); // useNavigate 훅을 사용합니다.
@@ -21,10 +22,31 @@ function YouthMoment() {
   // `<S.BackgroundContainer>` 클릭 시 파일 입력을 활성화하는 함수
   const handleContainerClick = () => {
     if (imageUrl) {
-      navigate("/"); // 이미지가 있으면 Home 페이지로 이동
+      openModal(); // 이미지가 있으면 모달 열기
     } else {
       document.getElementById("fileInput").click(); // 이미지가 없으면 파일 입력 활성화
     }
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
+  // Modal 스타일
+  const modalStyles = {
+    content: {
+      width: "20rem",
+      height: "12rem",
+      border: "1px solid #d3d3d3", // 더 연한 회색으로 변경
+      borderRadius: 15,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "30px",
+      margin: "auto", // 모달을 화면 중앙에 위치시킵니다
+    },
   };
 
   return (
@@ -57,6 +79,21 @@ function YouthMoment() {
             accept="image/*" // 이미지 파일만 선택 가능
           />
         </S.BackgroundContainer>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Confirm Send Modal"
+          style={modalStyles}
+        >
+          <S.NotificationText>알림</S.NotificationText>
+          <S.MessageContainer>
+            청춘의 순간 이벤트에 정상적으로 참여 완료되었습니다.
+          </S.MessageContainer>
+          <S.StyledDiv />
+          <S.ConfirmationText onClick={() => navigate("/")}>
+            확인
+          </S.ConfirmationText>
+        </Modal>
       </S.Container>
     </S.Wrapper>
   );
