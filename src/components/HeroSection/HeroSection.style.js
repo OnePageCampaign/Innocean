@@ -171,8 +171,8 @@ export const MoreIconSvgContainer = styled(LeaveIconSvg)`
 
 export const SupportStats = styled(FadeInContainer)`
   position: absolute;
-  top: 24.5rem;
-  left: 13rem;
+  top: 400px;
+  left: 14rem;
   transform: rotate(3deg); /* 텍스트를 3도 회전 */
   transform-origin: 0 0; /* 회전의 기준점을 왼쪽 상단으로 설정 */
   text-align: center; /* 텍스트를 중앙 정렬 */
@@ -186,7 +186,7 @@ export const SupportStats = styled(FadeInContainer)`
 
 export const IndependenceEducation = styled(FadeInContainer)`
   position: absolute;
-  top: 31rem;
+  top: 500px;
   left: 0.5rem;
   transform: rotate(-10deg); /* 텍스트를 -10도 회전 */
   transform-origin: 0 0; /* 회전의 기준점을 왼쪽 상단으로 설정 */
@@ -201,7 +201,7 @@ export const IndependenceEducation = styled(FadeInContainer)`
 
 export const SettlementGrant = styled(FadeInContainer)`
   position: absolute;
-  top: 36rem;
+  top: 550px;
   left: 16rem;
   transform: rotate(5deg); /* 텍스트를 5도 회전 */
   transform-origin: 0 0; /* 회전의 기준점을 왼쪽 상단으로 설정 */

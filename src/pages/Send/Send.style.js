@@ -76,19 +76,21 @@ export const LetterStyle = styled(LetterFrame)`
 
 export const LetterInput = styled.textarea`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 150px;
-  padding: 0.5rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  resize: none;
-  z-index: 100;
-  cursor: pointer;
+  top: 0; // 편지지 상단 정렬
+  left: 0; // 편지지 왼쪽 정렬
+  width: 100%; // 부모 컨테이너 크기에 맞춤
+  height: 100%; // 부모 컨테이너 높이에 맞춤
+  opacity: 1; // 투명도 조정
+  z-index: 2; // z-index를 높여 다른 요소 위에 표시
+  border: none; // 테두리 없앰
+  resize: none; // 크기 조절 비활성화
+  background: none; // 배경 없음
+  padding: 1rem; // 패딩 조정
+  box-sizing: border-box; // 패딩과 보더가 width와 height에 포함되도록 설정
+  color: black; // 텍스트 색상
+  font-size: 1rem; // 텍스트 크기
+  overflow: hidden; // 텍스트가 넘칠 경우 숨김
+  cursor: text; // 텍스트 입력 커서
 `;
 
 export const RecordBox = styled.div`

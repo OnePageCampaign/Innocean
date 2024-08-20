@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as A from "../Send/Send.style";
 import { useNavigate } from "react-router-dom";
 import Letter1 from "../../assets/Letter1.png";
@@ -19,11 +19,19 @@ const getRandomInitialImage = () => {
 function Send() {
   const navigate = useNavigate();
   const location = useLocation();
+  const letterInputRef = useRef(null); // Ref 생성
+
   const [randomNickname, setRandomNickname] = useState("");
   const [letterContent, setLetterContent] = useState("");
   const [result, setResult] = useState({ text: "", error: null });
   const [recognition, setRecognition] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+
+  const focusLetterInput = () => {
+    if (letterInputRef.current) {
+      letterInputRef.current.focus(); // LetterInput에 포커스 설정
+    }
+  };
 
   useEffect(() => {
     const initRecognition = () => {
@@ -133,12 +141,16 @@ function Send() {
           <A.TextStyleBold>{randomNickname}</A.TextStyleBold>
           <A.TextStyleNormal>님한테 전달할 편지에요!</A.TextStyleNormal>
         </A.CenteredContainer>
-        <A.LetterStyle>
-          <A.LetterInput
+        <textarea id="story" name="story" rows="5" cols="33">
+          It was a dark and stormy night...
+        </textarea>
+        <A.LetterStyle onClick={focusLetterInput}>
+          {/* <A.LetterInput
+            ref={letterInputRef}
             value={letterContent}
             onChange={handleLetterChange}
             placeholder="여기에 편지를 작성하세요..."
-          />
+          /> */}
         </A.LetterStyle>
         <A.RecordBox onClick={handleRecordClick}>
           <A.RecordIconBeforeStart isRecording={isRecording} />
@@ -148,7 +160,6 @@ function Send() {
             편지 보내기 <A.ArrowIcon />
           </A.ParticipationText>
         </A.BackgroundContainer>
-        
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
