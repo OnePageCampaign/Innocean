@@ -1,49 +1,49 @@
-import React from "react";
-import * as L from "./HeroSection.style";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import React from 'react'
+import * as L from './HeroSection.style'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 
 function HeroSection() {
-  const navigate = useNavigate();
-  const whiteContainerRef = useRef(null);
-  const grayContainerRef = useRef(null);
-  const youthIndependenceRef = useRef(null);
-  const ExtendedSupportInfoRef = useRef(null);
-  const moreIconRef = useRef(null); // MoreIconSvgContainer를 위한 ref 추가
-  const SupportStatsRef = useRef(null);
-  const IndependenceEducationRef = useRef(null);
-  const SettlementGrantRef = useRef(null);
+  const navigate = useNavigate()
+  const whiteContainerRef = useRef(null)
+  const grayContainerRef = useRef(null)
+  const youthIndependenceRef = useRef(null)
+  const ExtendedSupportInfoRef = useRef(null)
+  const moreIconRef = useRef(null)
+  const SupportStatsRef = useRef(null)
+  const IndependenceEducationRef = useRef(null)
+  const SettlementGrantRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      const screenHeight = window.innerHeight;
+      const screenHeight = window.innerHeight
 
-      const checkVisibility = (ref) => {
-        const pos = ref.current.getBoundingClientRect().top;
+      const checkVisibility = ref => {
+        const pos = ref.current.getBoundingClientRect().top
         if (pos < screenHeight) {
-          ref.current.style.opacity = 1;
+          ref.current.style.opacity = 1
         }
-      };
+      }
 
-      checkVisibility(whiteContainerRef);
-      checkVisibility(grayContainerRef);
-      checkVisibility(youthIndependenceRef);
-      checkVisibility(ExtendedSupportInfoRef);
-      checkVisibility(moreIconRef); // MoreIconSvgContainer에 대한 가시성 검사
-      checkVisibility(SupportStatsRef);
-      checkVisibility(IndependenceEducationRef);
-      checkVisibility(SettlementGrantRef);
-    };
+      checkVisibility(whiteContainerRef)
+      checkVisibility(grayContainerRef)
+      checkVisibility(youthIndependenceRef)
+      checkVisibility(ExtendedSupportInfoRef)
+      checkVisibility(moreIconRef)
+      checkVisibility(SupportStatsRef)
+      checkVisibility(IndependenceEducationRef)
+      checkVisibility(SettlementGrantRef)
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <L.Wrapper>
-      <L.ImageContainer src="/img/herosection.png" alt="Background" />
+      <L.ImageContainer src='/img/herosection.png' alt='Background' />
       <L.Container>
         한 페이지가 될 수 있게
         <L.CenteredContainer>
@@ -56,19 +56,29 @@ function HeroSection() {
         </L.CenteredContainer>
         <L.BackgroundContainer
           onClick={() => {
-            navigate("/letter");
+            navigate('/letter')
           }}
         >
           <L.ParticipationText>
             지금 바로 참여하기 <L.ArrowIcon />
           </L.ParticipationText>
         </L.BackgroundContainer>
-        <L.LearnMoreText>더 알아보기</L.LearnMoreText>
-        <L.BelowIcon />
+        <L.LearnMoreText
+          onClick={() => {
+            grayContainerRef.current.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          더 알아보기
+        </L.LearnMoreText>
+        <L.BelowIcon
+          onClick={() => {
+            grayContainerRef.current.scrollIntoView({ behavior: 'smooth' })
+          }}
+        />
       </L.Container>
 
       <L.WhiteContainer ref={whiteContainerRef}>
-        <L.TextStyleNormal style={{ color: "black" }}>
+        <L.TextStyleNormal style={{ color: 'black' }}>
           매년 2천 명이 넘는
           <br />
           <L.TextStyleBold>보호대상아동</L.TextStyleBold>이 발생하고 있습니다
@@ -109,7 +119,7 @@ function HeroSection() {
         </L.SettlementGrant>
       </L.GrayContainer>
     </L.Wrapper>
-  );
+  )
 }
 
-export default HeroSection;
+export default HeroSection
