@@ -1,137 +1,144 @@
-import React, { useState, useEffect, useRef } from "react";
-import * as A from "../Send/Send.style";
-import { useNavigate } from "react-router-dom";
-import Letter1 from "../../assets/Letter1.png";
-import Letter2 from "../../assets/Letter2.png";
-import Letter3 from "../../assets/Letter3.png";
-import Letter4 from "../../assets/Letter4.png";
-import Letter5 from "../../assets/Letter5.png";
-import { useLocation } from "react-router-dom";
-import Modal from "react-modal";
+import React, { useState, useEffect, useRef } from 'react'
+import * as A from '../Send/Send.style'
+import { useNavigate } from 'react-router-dom'
+import Letter1 from '../../assets/Letter1.png'
+import Letter2 from '../../assets/Letter2.png'
+import Letter3 from '../../assets/Letter3.png'
+import Letter4 from '../../assets/Letter4.png'
+import Letter5 from '../../assets/Letter5.png'
+import { useLocation } from 'react-router-dom'
+import Modal from 'react-modal'
 
-const images = [Letter1, Letter2, Letter3, Letter4, Letter5];
+const images = [Letter1, Letter2, Letter3, Letter4, Letter5]
 
 const getRandomInitialImage = () => {
-  const randomIndex = Math.floor(Math.random() * images.length);
-  return images[randomIndex];
-};
+  const randomIndex = Math.floor(Math.random() * images.length)
+  return images[randomIndex]
+}
 
 function Send() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const letterInputRef = useRef(null); // Ref 생성
+  const navigate = useNavigate()
+  const location = useLocation()
+  const letterInputRef = useRef(null) // Ref 생성
 
-  const [randomNickname, setRandomNickname] = useState("");
-  const [letterContent, setLetterContent] = useState("");
-  const [result, setResult] = useState({ text: "", error: null });
-  const [recognition, setRecognition] = useState(null);
-  const [isRecording, setIsRecording] = useState(false);
+  const [randomNickname, setRandomNickname] = useState('')
+  const [letterContent, setLetterContent] = useState('')
+  const [result, setResult] = useState({ text: '', error: null })
+  const [recognition, setRecognition] = useState(null)
+  const [isRecording, setIsRecording] = useState(false)
 
   const focusLetterInput = () => {
     if (letterInputRef.current) {
-      letterInputRef.current.focus(); // LetterInput에 포커스 설정
+      letterInputRef.current.focus() // LetterInput에 포커스 설정
     }
-  };
+  }
 
   useEffect(() => {
     const initRecognition = () => {
       //@ts-ignore
       const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+        window.SpeechRecognition || window.webkitSpeechRecognition
 
       if (!SpeechRecognition) {
-        console.error("SpeechRecognition이 지원되지 않습니다.");
-        return null;
+        console.error('SpeechRecognition이 지원되지 않습니다.')
+        return null
       }
 
-      const newRecognition = new SpeechRecognition();
-      newRecognition.lang = "ko-KR";
-      newRecognition.interimResults = false;
-      newRecognition.maxAlternatives = 1;
+      const newRecognition = new SpeechRecognition()
+      newRecognition.lang = 'ko-KR'
+      newRecognition.interimResults = false
+      newRecognition.maxAlternatives = 1
 
-      return newRecognition;
-    };
+      return newRecognition
+    }
 
-    const speechRecognition = initRecognition();
-    setRecognition(speechRecognition);
-  }, []);
+    const speechRecognition = initRecognition()
+    setRecognition(speechRecognition)
+  }, [])
 
   const startListening = () => {
     if (!recognition) {
-      setResult({ text: "", error: "SpeechRecognition이 지원되지 않습니다." });
-      return;
+      setResult({ text: '', error: 'SpeechRecognition이 지원되지 않습니다.' })
+      return
     }
 
-    recognition.addEventListener("result", handleResult);
-    recognition.addEventListener("error", handleError);
-    recognition.start();
-    setIsRecording(true);
-  };
+    recognition.addEventListener('result', handleResult)
+    recognition.addEventListener('error', handleError)
+    recognition.start()
+    setIsRecording(true)
+  }
 
   const stopListening = () => {
     if (recognition) {
-      recognition.removeEventListener("result", handleResult);
-      recognition.removeEventListener("error", handleError);
-      recognition.stop();
-      setIsRecording(false);
+      recognition.removeEventListener('result', handleResult)
+      recognition.removeEventListener('error', handleError)
+      recognition.stop()
+      setIsRecording(false)
     }
-  };
+  }
 
-  const handleResult = (event) => {
-    const text = event.results[0][0].transcript;
-    setResult({ text, error: null });
-    console.log("Recognized text:", result); // 디버깅을 위한 로그 추가
-    setLetterContent((prevContent) => prevContent + text);
-    stopListening();
-  };
+  const handleResult = event => {
+    const text = event.results[0][0].transcript
+    setResult({ text, error: null })
+    console.log('Recognized text:', result) // 디버깅을 위한 로그 추가
+    setLetterContent(prevContent => prevContent + text)
+    stopListening()
+  }
 
-  const handleError = (event) => {
-    console.error("SpeechRecognition error:", event.error); // 디버깅을 위한 로그 추가
+  const handleError = event => {
+    console.error('SpeechRecognition error:', event.error) // 디버깅을 위한 로그 추가
     setResult({
-      text: "",
+      text: '',
       error: `SpeechRecognition error: ${event.error}`,
-    });
-    stopListening();
-  };
+    })
+    stopListening()
+  }
 
   useEffect(() => {
     if (location.state?.randomNickname) {
-      setRandomNickname(location.state.randomNickname);
+      setRandomNickname(location.state.randomNickname)
     }
-  }, [location]);
+  }, [location])
 
-  const handleLetterChange = (event) => {
-    setLetterContent(event.target.value);
-  };
+  const handleLetterChange = e => {
+    const lines = e.target.value.split('\n')
+
+    if (lines.length > 8) {
+      lines[7] = lines[7].slice(0, 20) // 예시로 50글자 제한
+      setLetterContent(lines.slice(0, 8).join('\n'))
+    } else {
+      setLetterContent(e.target.value)
+    }
+  }
 
   const handleRecordClick = () => {
     if (isRecording) {
-      stopListening();
+      stopListening()
     } else {
-      startListening();
+      startListening()
     }
-  };
+  }
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  const openModal = () => setModalIsOpen(true)
+  const closeModal = () => setModalIsOpen(false)
 
   // Modal 스타일
   const modalStyles = {
     content: {
-      width: "20rem",
-      height: "12rem",
-      border: "1px solid #d3d3d3", // 더 연한 회색으로 변경
+      width: '20rem',
+      height: '12rem',
+      border: '1px solid #d3d3d3', // 더 연한 회색으로 변경
       borderRadius: 15,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: "30px",
-      margin: "auto", // 모달을 화면 중앙에 위치시킵니다
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '30px',
+      margin: 'auto', // 모달을 화면 중앙에 위치시킵니다
     },
-  };
+  }
 
   return (
     <A.Wrapper>
@@ -141,16 +148,13 @@ function Send() {
           <A.TextStyleBold>{randomNickname}</A.TextStyleBold>
           <A.TextStyleNormal>님한테 전달할 편지에요!</A.TextStyleNormal>
         </A.CenteredContainer>
-        <textarea id="story" name="story" rows="5" cols="33">
-          It was a dark and stormy night...
-        </textarea>
-        <A.LetterStyle onClick={focusLetterInput}>
-          {/* <A.LetterInput
+        <A.LetterStyle>
+          <A.LetterInput
             ref={letterInputRef}
             value={letterContent}
             onChange={handleLetterChange}
-            placeholder="여기에 편지를 작성하세요..."
-          /> */}
+            placeholder='여기에 편지를 작성하세요...'
+          />
         </A.LetterStyle>
         <A.RecordBox onClick={handleRecordClick}>
           <A.RecordIconBeforeStart isRecording={isRecording} />
@@ -163,7 +167,7 @@ function Send() {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          contentLabel="Confirm Send Modal"
+          contentLabel='Confirm Send Modal'
           style={modalStyles} // 모달 스타일 적용
         >
           <A.NotificationText>알림</A.NotificationText>
@@ -176,7 +180,7 @@ function Send() {
 
           <A.ConfirmationText
             onClick={() => {
-              navigate("/");
+              navigate('/')
             }}
           >
             확인
@@ -184,6 +188,6 @@ function Send() {
         </Modal>
       </A.Container>
     </A.Wrapper>
-  );
+  )
 }
-export default Send;
+export default Send
