@@ -1,26 +1,40 @@
-import React from 'react'
-import * as B from './Youth4Cut.style'
-import Frame from '../../assets/frame.png'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import * as B from "./Youth4Cut.style";
+import Frame from "../../assets/frame.png";
+import { useNavigate } from "react-router-dom";
 
 function Youth4Cut() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleImageDownload = () => {
-    const url = Frame
+    const url = Frame;
 
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'my-youth-4cut.png'
-    document.body.appendChild(a)
-    a.click()
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "my-youth-4cut.png";
+    document.body.appendChild(a);
+    a.click();
 
-    document.body.removeChild(a)
-  }
+    document.body.removeChild(a);
+  };
 
   const handleMoveHome = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "우리의 청춘을 네 컷에 담았다",
+          text: "마음을 전해주는 한 페이지를 보내주세요. 자립준비청년의 아름다운 청춘의 한 장도 함께 써내려가주세요.",
+          url: "https://innocean.vercel.app/",
+        })
+        .catch(console.error);
+    } else {
+      alert("Your browser does not support the share feature.");
+    }
+  };
 
   return (
     <B.Wrapper>
@@ -34,7 +48,7 @@ function Youth4Cut() {
               <B.BlackCameraIcon /> 사진 다운로드
             </B.WhiteParticipationText>
           </B.WhiteBackgroundContainer>
-          <B.WhiteBackgroundContainer>
+          <B.WhiteBackgroundContainer onClick={handleShare}>
             <B.WhiteParticipationText>
               <B.ShareIcon /> 캠페인 공유하기
             </B.WhiteParticipationText>
@@ -52,7 +66,7 @@ function Youth4Cut() {
         </B.BackgroundContainer>
       </B.Container>
     </B.Wrapper>
-  )
+  );
 }
 
-export default Youth4Cut
+export default Youth4Cut;
